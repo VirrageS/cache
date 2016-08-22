@@ -11,7 +11,7 @@ import (
     "github.com/VirrageS/cache"
 )
 
-func API(c *cache.Cache) {
+func API(c *cache.Cache) []string {
     cached_items, exists := c.Get("api")
     if exists {
         return cached_items
@@ -22,7 +22,7 @@ func API(c *cache.Cache) {
     return items
 }
 
-func main () {
+func main() {
     cache := NewCache(time.Minute)
     items := API(cache)
 
