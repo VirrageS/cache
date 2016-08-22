@@ -33,7 +33,7 @@ func TestCleaning(t *testing.T) {
 		t.Errorf("Expected cache to return data for `hello`")
 	}
 
-	time.Sleep(time.Millisecond + time.Microsecond)
+	time.Sleep(time.Millisecond + time.Millisecond)
 	_, exists = cache.Get("hello")
 	if exists {
 		t.Errorf("Expected cache to clean all data and return nothing for `hello`")
