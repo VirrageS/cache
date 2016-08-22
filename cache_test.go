@@ -23,3 +23,19 @@ func TestGet(t *testing.T) {
 		t.Errorf("Expected cache to return `world` for `hello`")
 	}
 }
+
+func TestCleaning(t *testing.T) {
+	cache := NewCache(time.Millisecond)
+
+	cache.Set("hello", "world")
+	_, exists := cache.Get("hello")
+	if !exists {
+		t.Errorf("Expected cache to return data for `hello`")
+	}
+
+	time.Sleep(time.Millisecond + time.Microsecond)
+	_, exists = cache.Get("hello")
+	if exists {
+		t.Errorf("Expected cache to clean all data and return nothing for `hello`")
+	}
+}

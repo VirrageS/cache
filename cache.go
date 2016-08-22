@@ -57,12 +57,7 @@ func (c *Cache) cleanup() {
 }
 
 func (c *Cache) startCleanupTimer() {
-	duration := c.ttl
-	if duration < time.Second {
-		duration = time.Second
-	}
-
-	ticker := time.Tick(duration)
+	ticker := time.Tick(c.ttl)
 	go (func() {
 		for {
 			select {
