@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func TestGet(t *testing.T) {
+func Test_CacheSetGet(t *testing.T) {
 	cache := NewCache(time.Minute * 10)
 
 	data, exists := cache.Get("hello")
@@ -24,7 +24,7 @@ func TestGet(t *testing.T) {
 	}
 }
 
-func TestCleaning(t *testing.T) {
+func Test_CacheCleaning(t *testing.T) {
 	cache := NewCache(time.Millisecond)
 
 	cache.Set("hello", "world")
